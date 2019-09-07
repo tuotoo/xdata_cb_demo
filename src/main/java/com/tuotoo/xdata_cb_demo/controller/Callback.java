@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 @RestController
@@ -27,12 +28,11 @@ public class Callback {
                             .write(Base64.getDecoder().decode(article.JPG));
                 }
                 if (article.TXT != null) {
-                    new FileOutputStream("./" + article.Title + ".txt")
-                            .write(Base64.getDecoder().decode(article.TXT));
+                    new FileOutputStream("./" + article.Title + ".txt").write(article.TXT.getBytes(StandardCharsets.UTF_8));
                 }
                 if (article.HTML != null) {
                     new FileOutputStream("./" + article.Title + ".html")
-                            .write(Base64.getDecoder().decode(article.HTML));
+                            .write(article.HTML.getBytes(StandardCharsets.UTF_8));
                 }
                 if (article.PDF != null) {
                     new FileOutputStream("./" + article.Title + ".pdf")
