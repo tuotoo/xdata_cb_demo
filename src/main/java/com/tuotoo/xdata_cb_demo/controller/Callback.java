@@ -34,7 +34,7 @@ public class Callback {
                     new FileOutputStream("./" + article.Title + ".html")
                             .write(Base64.getDecoder().decode(article.HTML));
                 }
-                if (article.HTML != null) {
+                if (article.PDF != null) {
                     new FileOutputStream("./" + article.Title + ".pdf")
                             .write(Base64.getDecoder().decode(article.PDF));
                 }
